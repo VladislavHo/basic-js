@@ -4,7 +4,7 @@ module.exports = function createDreamTeam(members) {
   throw new CustomError('Not implemented');
   // remove line with error and write your code here
   let arr = []
-  if(team == undefined || team === null){
+  if(team == undefined || team === null || team === false){
     return false
   }
 for (let i = 0; i < team.length; i++) {
