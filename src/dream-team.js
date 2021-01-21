@@ -9,10 +9,10 @@ module.exports = function createDreamTeam(team) {
   }
 for (let i = 0; i < team.length; i++) {
   if(typeof(team[i]) === 'string'){
-    arr.push(team[i][0])
+    arr.push(team[i][0].trim().toUpperCase())
   }
 
 }
-return team.length === 0 ? false : arr.sort().join('').toUpperCase().toString()
+return team.length === 0 ? false : arr.sort().join('')
 
 };
