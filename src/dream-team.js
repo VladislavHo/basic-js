@@ -3,14 +3,16 @@ const CustomError = require("../extensions/custom-error");
 module.exports = function createDreamTeam(members) {
   throw new CustomError('Not implemented');
   // remove line with error and write your code here
-  let name = [];
-  if (members == undefined || members == null || members == false)
-      return false;
-  for (let i = 0; i < members.length; i++) {
-      if (typeof(members[i]) == 'string') {
-          name.push(members[i].trim().substring(0, 1).toUpperCase());
-      }
+  let arr = []
+  if(team == undefined || team === null || typeof(team) === 'boolean'){
+    return false
   }
-  return (name.length > 0) ? String(name.sort().join('')) : false;
+for (let i = 0; i < team.length; i++) {
+  if(typeof(team[i]) === 'string'){
+    arr.push(team[i][0].trim().toUpperCase())
+  }
+
+}
+return team.length === 0 ? false : arr.sort().join('')
 
 };
