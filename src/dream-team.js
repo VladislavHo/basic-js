@@ -4,14 +4,14 @@ module.exports = function createDreamTeam(members) {
   throw new CustomError('Not implemented');
   // remove line with error and write your code here
   let arr = []
-if(members.length === null || members === undefined){
-  return false
-}
-  for (let i = 0; i < members.length; i++) {
-    if(typeof(members[i]) === 'string'){
-      arr.push(members[i][0]).toUpperCase()
-    }
-  
+  if(team == undefined || team === null){
+    return false
   }
-  return arr.sort().join('')
+for (let i = 0; i < team.length; i++) {
+  if(typeof(team[i]) === 'string'){
+    arr.push(team[i][0])
+  }
+
+}
+return team.length === 0 ? false : arr.sort().join('').toUpperCase()
 };
