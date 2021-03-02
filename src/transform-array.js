@@ -1,35 +1,44 @@
 const CustomError = require("../extensions/custom-error");
 
-module.exports =  function transform(arr) {
+module.exports = function transform(arr) {
   if (!Array.isArray(arr)) {
 		throw new Error ()
 	}
+  if(!arr.length){
+    return []
+  }
+let newArr = []
+for (let index = 0; index < arr.length; index++) {
+    switch (arr[index]) {
+      case '--discard-next':
+        index++
+        break;
+      case '--discard-prev':
+        if(index > 0 && arr[index - 2] !== '--discard-next'){
+          newArr.pop()
+        }
 
-  let newArr = []
-  for (let i = 0; i < arr.length; i++) {
-    if (typeof arr[i] === 'string') {
-      if (arr[i] === '--discard-next') {
-        newArr.pop(arr[i + 1])
+        break;z
+      case '--double-next':
+        if(index !== arr.length - 1){
+          newArr.push(arr[index + 1] )
+        }
         
-      }
-      if(arr[i] === '--discard-prev'){
-        newArr.pop(arr[i+1])
+        break;
+      case '--double-prev':
+        if(index > 0 && arr[index - 2] !== '--discard-next') {
+          newArr.push(arr[index - 1])
+        }
         
-      }
-      if(arr[i] === '--double-next'){
-        newArr.push(arr[i+1])
-      }
-      if(arr[i] === '--double-prev'){
-        newArr.push(arr[i-1])
-      }
-      
+        break;
+      default:
+        newArr.push(arr[index])
+        break;
     }
-    if(typeof arr[i] === 'number'){
-      newArr.push(arr[i])
-    }
-    
   }
   return newArr
 };
+
+
 
 
